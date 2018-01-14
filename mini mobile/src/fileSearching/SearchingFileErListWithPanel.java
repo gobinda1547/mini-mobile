@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.io.File;
 
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -21,9 +20,13 @@ import fileSearching.SearchWholeComputer;
 
 public class SearchingFileErListWithPanel extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("rawtypes")
 	private JList countryList;
 	public static boolean vis = false;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public SearchingFileErListWithPanel(final String[] str) {
 
 		setLayout(new GridLayout(1, 1));
@@ -48,13 +51,11 @@ public class SearchingFileErListWithPanel extends JPanel {
 				if (vis) {
 					vis = false;
 					if (whatTypeOfFile(st[countryList.getSelectedIndex()]) == 4)
-						PlayAllKindOffFile.EiVideoFileTaOpenKoro(st[countryList
-								.getSelectedIndex()]);
+						PlayAllKindOffFile.EiVideoFileTaOpenKoro(st[countryList.getSelectedIndex()]);
 					else if (whatTypeOfFile(st[countryList.getSelectedIndex()]) == 0)
 						OpenFolder.openAFile(st[countryList.getSelectedIndex()]);
 					else if (whatTypeOfFile(st[countryList.getSelectedIndex()]) == 3)
-						PlayAllKindOffFile.EiAudioFileTaOpenKoro(st[countryList
-								.getSelectedIndex()]);
+						PlayAllKindOffFile.EiAudioFileTaOpenKoro(st[countryList.getSelectedIndex()]);
 				} else
 					vis = true;
 
@@ -62,10 +63,8 @@ public class SearchingFileErListWithPanel extends JPanel {
 		});
 
 		JScrollPane jScrollPane = new JScrollPane(countryList);
-		jScrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		jScrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jScrollPane.setViewportBorder(new LineBorder(Color.RED));
 		add(jScrollPane);
 
@@ -120,7 +119,7 @@ public class SearchingFileErListWithPanel extends JPanel {
 
 		for (int i = k; i < 5000; i++)
 			strings[i] = new String("");
-		
+
 		return strings;
 
 	}

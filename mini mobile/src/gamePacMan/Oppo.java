@@ -1,6 +1,5 @@
 package gamePacMan;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Graphics;
 

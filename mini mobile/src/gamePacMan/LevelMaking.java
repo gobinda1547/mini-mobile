@@ -43,7 +43,6 @@ public class LevelMaking {
 			makeLevelnine();
 		else if (l == 10)
 			makeLevelten();
-		
 
 		for (int i = 0; i < 432; i++) {
 			if (vis[i])
@@ -404,17 +403,17 @@ public class LevelMaking {
 
 	private void makeLeveleight() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void makeLevelnine() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void makeLevelten() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void drawLevel(Graphics g) {
@@ -429,8 +428,7 @@ public class LevelMaking {
 		g.setColor(Color.WHITE);
 		for (int i = 0; i < 432; i++)
 			if (!value[i]) {
-				g.fillRect(300 + (i % 24) * 20 + 8, 10 + (i / 24) * 20 + 8, 4,
-						4);
+				g.fillRect(300 + (i % 24) * 20 + 8, 10 + (i / 24) * 20 + 8, 4, 4);
 			}
 	}
 
@@ -481,18 +479,12 @@ public class LevelMaking {
 			}
 		}
 
-		/*for (int i = 0; i < z; i++) {
-			System.out.print(i + "   ");
-			for (int j = 0; j < 4; j++) {
-				System.out.print(r[i][j] + " ");
-			}
-			System.out.println();
-		}*/
+		/*
+		 * for (int i = 0; i < z; i++) { System.out.print(i + "   "); for (int j
+		 * = 0; j < 4; j++) { System.out.print(r[i][j] + " "); }
+		 * System.out.println(); }
+		 */
 		return r;
-	}
-
-	private void Levellll() {
-		vis[Ami.pos] = true;
 	}
 
 	private void makeLevelOne() {

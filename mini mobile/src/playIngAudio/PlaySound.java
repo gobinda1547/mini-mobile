@@ -8,6 +8,8 @@ import javax.swing.JApplet;
 
 public class PlaySound extends JApplet {
 
+	private static final long serialVersionUID = 1L;
+
 	public PlaySound(String str, int p) {
 		Th t = new Th(str, p);
 		t.start();

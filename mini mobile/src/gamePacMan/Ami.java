@@ -2,13 +2,9 @@ package gamePacMan;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.beans.Visibility;
-
-import playIngAudio.PlaySound;
 
 public class Ami {
 
-	// right left up dowm
 	public static int pos, f1, amrColorChangingCounter = 0;
 
 	public Ami() {
@@ -23,8 +19,7 @@ public class Ami {
 			g.setColor(Color.BLUE);
 		else
 			g.setColor(Color.WHITE);
-		g.fillRect(300 + (pos % 24) * PacMan.size, 10 + (pos / 24)
-				* PacMan.size, f1, f1);
+		g.fillRect(300 + (pos % 24) * PacMan.size, 10 + (pos / 24) * PacMan.size, f1, f1);
 	}
 
 	public void moveMine(int a) {

@@ -11,19 +11,20 @@ import javax.swing.JPanel;
 
 public class PacMan extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static Ami mine = new Ami();
 	public static LevelMaking levelMaking = new LevelMaking();
 	public static Oppo[] oppos = new Oppo[3];
 
-	public static boolean showGameOver, showOption, playingGame,
-			bestGradesShow, enterChaparTimeHoice, marboGuli;
+	public static boolean showGameOver, showOption, playingGame, bestGradesShow, enterChaparTimeHoice, marboGuli;
 
-	public static int size = 20, optionValue, gameTimer, scoreValue,
-			amrMovingCounter, amrMovingValue = 10, levelSize = 10,
-			levelValue = 1, totalOpponents = 1;
+	public static int size = 20, optionValue, gameTimer, scoreValue, amrMovingCounter, amrMovingValue = 10,
+			levelSize = 10, levelValue = 1, totalOpponents = 1;
 
-	public static boolean leftDirection, rightDirection, upDirection,
-			downDirection, showStarting;
+	public static boolean leftDirection, rightDirection, upDirection, downDirection, showStarting;
 
 	public void makeAllDirectionFalse() {
 		leftDirection = false;
@@ -216,8 +217,7 @@ public class PacMan extends JPanel {
 		showGameOver = true;
 		gameTimer = 0;
 		if (FileIOForGame.pacManKhelarBestScore() < scoreValue) {
-			FileIOForGame.pacManKhelarScoreMucheAddKoro(String
-					.valueOf(scoreValue));
+			FileIOForGame.pacManKhelarScoreMucheAddKoro(String.valueOf(scoreValue));
 		}
 	}
 

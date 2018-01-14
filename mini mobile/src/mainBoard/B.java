@@ -13,16 +13,11 @@ import gameSnake.Snake;
 
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-
-import playIngAudio.PlaySound;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -31,13 +26,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 
 import clientServer.MainCS;
@@ -46,22 +38,19 @@ import java.awt.Color;
 
 public class B extends JPanel implements KeyListener, MouseListener {
 
-	public static boolean showIpAddress, showCommandPrompt, showNotePad,
-			showShutDown, showReStart, showGuliGuliGame, showNormalScreen,
-			showSnakeGame, showGunFireGame, searchingFileNeyaHoyeGece,
-			showReadyForTakingTheSearchingFileName, passwordTryButFailed,
-			showReadyToGetPasswordforUltaPalta, passwordNeyaSesforUltaPalta,
-			showPacManGame, showHiberNet, showClientNetWork, showServerNetwork,
+	private static final long serialVersionUID = 1L;
+	public static boolean showIpAddress, showCommandPrompt, showNotePad, showShutDown, showReStart, showGuliGuliGame,
+			showNormalScreen, showSnakeGame, showGunFireGame, searchingFileNeyaHoyeGece,
+			showReadyForTakingTheSearchingFileName, passwordTryButFailed, showReadyToGetPasswordforUltaPalta,
+			passwordNeyaSesforUltaPalta, showPacManGame, showHiberNet, showClientNetWork, showServerNetwork,
 			showTaskManager, showTaskManager2, showDidxag, showDidxag2;
-	public static String ipAddressString, searchingFileName,
-			passwordforUltaPalta;
+	public static String ipAddressString, searchingFileName, passwordforUltaPalta;
 	public static int shutDownCounter, reStartCounter;
 
 	private static GuliGame guliGame;
 	private static Snake snake;
 	private static GunFireGame gunFireGame;
 	private static PacMan pacMan;
-	private PlaySound playSound;
 
 	public static int backGroundCounter = 0, totalBackGround = 10;
 	private static BackGround[] backGrounds = new BackGround[totalBackGround];
@@ -421,11 +410,6 @@ public class B extends JPanel implements KeyListener, MouseListener {
 
 	}
 
-	private void OperationShow(Graphics g) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public B() {
 		setLayout(null);
 		addKeyListener(this);
@@ -446,8 +430,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 		JButton guliGuliGameButton = new JButton("guliGame");
 		guliGuliGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!FileIOForGame.levelFileAceKiNa()
-						|| !FileIOForGame.scoreFileAceKiNa()) {
+				if (!FileIOForGame.levelFileAceKiNa() || !FileIOForGame.scoreFileAceKiNa()) {
 					FileIOForGame.makeDirectioryFolder();
 					FileIOForGame.makeLevelFile();
 					FileIOForGame.makeScoreFile();
@@ -530,8 +513,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 			public void actionPerformed(ActionEvent arg0) {
 
 				try {
-					Runtime.getRuntime()
-							.exec("C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation");
+					Runtime.getRuntime().exec("C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -552,7 +534,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				Runtime runtime = Runtime.getRuntime();
 
 				try {
-					Process proc = runtime.exec("shutdown -s -t 10");
+					runtime.exec("shutdown -s -t 10");
 				} catch (IOException e) { // TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -573,7 +555,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				Runtime runtime = Runtime.getRuntime();
 
 				try {
-					Process proc = runtime.exec("shutdown -r -t 10");
+					runtime.exec("shutdown -r -t 10");
 				} catch (IOException e) { // TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -593,7 +575,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				Runtime runtime = Runtime.getRuntime();
 
 				try {
-					Process proc = runtime.exec("shutdown -a");
+					runtime.exec("shutdown -a");
 				} catch (IOException e) { // TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -612,7 +594,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				showNotePad = true;
 				String filePath = "C:/Windows/Notepad.exe";
 				try {
-					Process p = Runtime.getRuntime().exec(filePath);
+					Runtime.getRuntime().exec(filePath);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -644,8 +626,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				makeAllFalse();
 				showCommandPrompt = true;
 				try {
-					Runtime.getRuntime().exec(
-							new String[] { "cmd", "/k", "start", "cmd" });
+					Runtime.getRuntime().exec(new String[] { "cmd", "/k", "start", "cmd" });
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -717,7 +698,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				if (new File(filePath).exists()) {
 					showTaskManager = true;
 					try {
-						Process p = Runtime.getRuntime().exec(filePath);
+						Runtime.getRuntime().exec(filePath);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -737,7 +718,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 			public void actionPerformed(ActionEvent arg0) {
 				MainCS.doit();
 				makeAllFalse();
-				showNormalScreen=true;
+				showNormalScreen = true;
 			}
 		});
 		btnScanVirus.setToolTipText("Command Prompte");
@@ -755,7 +736,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				if (new File(filePath).exists()) {
 					showDidxag = true;
 					try {
-						Process p = Runtime.getRuntime().exec(filePath);
+						Runtime.getRuntime().exec(filePath);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -769,7 +750,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 		btnPcProperties.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnPcProperties.setBounds(156, 217, 120, 35);
 		add(btnPcProperties);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBackground(Color.DARK_GRAY);
 		separator.setBounds(24, 90, 252, 2);
@@ -825,21 +806,16 @@ public class B extends JPanel implements KeyListener, MouseListener {
 		}
 
 		else if (GuliGame.playingStage) {
-			if (e.getKeyCode() == KeyEvent.VK_D
-					|| e.getKeyCode() == KeyEvent.VK_RIGHT)
+			if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT)
 				Mine.direction = 0;
-			if (e.getKeyCode() == KeyEvent.VK_A
-					|| e.getKeyCode() == KeyEvent.VK_LEFT)
+			if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT)
 				Mine.direction = 1;
-			if (e.getKeyCode() == KeyEvent.VK_W
-					|| e.getKeyCode() == KeyEvent.VK_UP)
+			if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP)
 				Mine.direction = 2;
-			if (e.getKeyCode() == KeyEvent.VK_S
-					|| e.getKeyCode() == KeyEvent.VK_DOWN)
+			if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN)
 				Mine.direction = 3;
 
-			if (e.getKeyCode() == KeyEvent.VK_SPACE
-					&& GuliGame.amrGuliMararJoggotaCounter > Mine.howQuickGuliCharbe) {
+			if (e.getKeyCode() == KeyEvent.VK_SPACE && GuliGame.amrGuliMararJoggotaCounter > Mine.howQuickGuliCharbe) {
 				GuliGame.amiGuliMarboKina = true;
 				GuliGame.amrGuliMararJoggotaCounter = 0;
 			}
@@ -850,13 +826,9 @@ public class B extends JPanel implements KeyListener, MouseListener {
 	private void forGuliGuliGameKeyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (GuliGame.playingStage) {
-			if (e.getKeyCode() == KeyEvent.VK_D
-					|| e.getKeyCode() == KeyEvent.VK_A
-					|| e.getKeyCode() == KeyEvent.VK_W
-					|| e.getKeyCode() == KeyEvent.VK_S
-					|| e.getKeyCode() == KeyEvent.VK_RIGHT
-					|| e.getKeyCode() == KeyEvent.VK_LEFT
-					|| e.getKeyCode() == KeyEvent.VK_UP
+			if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_W
+					|| e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_RIGHT
+					|| e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_UP
 					|| e.getKeyCode() == KeyEvent.VK_DOWN)
 				Mine.direction = 5;
 			if (e.getKeyCode() == KeyEvent.VK_SPACE)
@@ -945,8 +917,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 			searchingFileNeyaHoyeGece = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 			if (searchingFileName.length() > 0)
-				searchingFileName = searchingFileName.substring(0,
-						searchingFileName.length() - 1);
+				searchingFileName = searchingFileName.substring(0, searchingFileName.length() - 1);
 		} else {
 			searchingFileName += String.valueOf(e.getKeyChar());
 		}
@@ -979,8 +950,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 			passwordNeyaSesforUltaPalta = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 			if (passwordforUltaPalta.length() > 0)
-				passwordforUltaPalta = passwordforUltaPalta.substring(0,
-						passwordforUltaPalta.length() - 1);
+				passwordforUltaPalta = passwordforUltaPalta.substring(0, passwordforUltaPalta.length() - 1);
 		} else if (((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') || (ch >= 'A' && ch <= 'Z'))
 				&& passwordforUltaPalta.length() < 16) {
 			passwordforUltaPalta += String.valueOf(e.getKeyChar());
@@ -1015,27 +985,23 @@ public class B extends JPanel implements KeyListener, MouseListener {
 		// TODO Auto-generated method stub
 		if (Snake.playingGame) {
 			int key = e.getKeyCode();
-			if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
-					&& (!Snake.rightDirection)) {
+			if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && (!Snake.rightDirection)) {
 
 				snake.makeAllDirectionFalse();
 				Snake.leftDirection = true;
 			}
 
-			if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
-					&& (!Snake.leftDirection)) {
+			if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) && (!Snake.leftDirection)) {
 				snake.makeAllDirectionFalse();
 				Snake.rightDirection = true;
 			}
 
-			if ((key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
-					&& (!Snake.downDirection)) {
+			if ((key == KeyEvent.VK_UP || key == KeyEvent.VK_W) && (!Snake.downDirection)) {
 				snake.makeAllDirectionFalse();
 				Snake.upDirection = true;
 			}
 
-			if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
-					&& (!Snake.upDirection)) {
+			if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) && (!Snake.upDirection)) {
 				snake.makeAllDirectionFalse();
 				Snake.downDirection = true;
 			}
@@ -1109,15 +1075,13 @@ public class B extends JPanel implements KeyListener, MouseListener {
 		// TODO Auto-generated method stub
 		if (PacMan.playingGame) {
 			int key = e.getKeyCode();
-			if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
-					&& moveMine(1)) {
+			if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && moveMine(1)) {
 
 				pacMan.makeAllDirectionFalse();
 				PacMan.leftDirection = true;
 			}
 
-			if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
-					&& moveMine(0)) {
+			if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) && moveMine(0)) {
 				pacMan.makeAllDirectionFalse();
 				PacMan.rightDirection = true;
 			}
@@ -1127,8 +1091,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 				PacMan.upDirection = true;
 			}
 
-			if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
-					&& moveMine(3)) {
+			if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) && moveMine(3)) {
 				pacMan.makeAllDirectionFalse();
 				PacMan.downDirection = true;
 			}
@@ -1205,8 +1168,7 @@ public class B extends JPanel implements KeyListener, MouseListener {
 
 		if (showGuliGuliGame) {
 			if (GuliGame.playingStage) {
-				if (e.getButton() == 1
-						&& GuliGame.amrGuliMararJoggotaCounter > Mine.howQuickGuliCharbe) {
+				if (e.getButton() == 1 && GuliGame.amrGuliMararJoggotaCounter > Mine.howQuickGuliCharbe) {
 					GuliGame.amiGuliMarboKina = true;
 					GuliGame.amrGuliMararJoggotaCounter = 0;
 				}
